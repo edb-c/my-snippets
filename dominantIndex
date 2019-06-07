@@ -29,31 +29,29 @@ Every nums[i] will be an integer in the range [0, 99].
  * @param {number[]} nums
  * @return {number}
  */
+ //nums = [0,0,0,1]
+nums = [1, 2, 3, 4]
 
-var dominantIndex = function(nums) {
-    if (nums.length === 1) return 0;
-    
-    let largestIndex;
-    let secondLargestIndex;
-    
-    for (let i = 0; i < nums.length; i++) {
-        if (i === 0) {
-            largestIndex = i;
-        } else {
-            if (nums[i] > nums[largestIndex]) {
-                secondLargestIndex = largestIndex;
-                largestIndex = i;
-            } else if (nums[i] > nums[secondLargestIndex] && nums[i] < nums[largestIndex] || secondLargestIndex == null) {
-                secondLargestIndex = i;
-            }
-        }
-    }
-    
-    if (secondLargestIndex == null) return 0;
-    
-    if (nums[largestIndex] - (nums[secondLargestIndex] * 2) >= 0) {
-        return largestIndex;
-    } else {
-        return -1;
-    }
-};
+function dominantIndex(nums) {
+
+let numsSrted = nums.slice().sort(function(a, b){return b-a});
+  //console.log(numsSrted);
+const maxNum = numsSrted[0];
+let maxIndex = nums.indexOf(maxNum);
+  //console.log(maxIndex);
+numsSrted.shift();
+  //console.log(numsSrted);
+
+numsSrted.forEach(e => {
+
+  if (e*2 > maxNum ) check: {
+    maxIndex = -1;
+    break check;
+  }; //end if
+}); //end forEach
+
+return maxIndex;
+
+} //end function
+
+dominantIndex(nums);
