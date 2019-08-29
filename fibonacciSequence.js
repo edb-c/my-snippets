@@ -27,13 +27,14 @@ var fibonacciSequence = function(num) {
       int2 = result;
 
       if (result < num) {
-        //  console.log(result , i, num);
+          //console.log(result , i, num);
 
         fibonacciSequenceArray.push(result);
       }
     }
+    console.log(fibonacciSequenceArray)
     return fibonacciSequenceArray;
   }
 };
 
-fibonacciSequence(3);
+fibonacciSequence(100);
